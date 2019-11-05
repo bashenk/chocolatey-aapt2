@@ -4,7 +4,6 @@ $ErrorActionPreference = 'Stop';
 $unzipLocation   = "$(Split-Path -parent $MyInvocation.MyCommand.Definition)"
 
 $PackageParameters = Get-PackageParameters
-Write-Output("Params: ")
 $PackageParameters | % {Write-Output($_ | Out-String)}
 if (!$PackageParameters['Channel']) { 
   $PackageParameters['Channel'] = 'stable'
@@ -22,7 +21,6 @@ $mavenUrl = 'https://dl.google.com/dl/android/maven2/com/android/tools/build/aap
 $aapt2Url = "$mavenUrl/maven-metadata.xml"
 
 Write-Output("`nChecking maven repository for latest aapt2 version on the $($PackageParameters['Channel']) channel.")
-exit 0
 [xml]$data = (New-Object System.Net.WebClient).DownloadString($aapt2Url)
 $versions = $data.metadata.versioning.versions.version | Where-Object { $_ -match "^[0-9]+\.[0-9]\.[0-9]-(?:$channel[0-9]{2}-)?[0-9]+$" }
 $latest = $versions | Sort-Object -Descending | Select-Object -First 1
