@@ -4,7 +4,6 @@ $ErrorActionPreference = 'Stop';
 $unzipLocation   = "$(Split-Path -parent $MyInvocation.MyCommand.Definition)"
 
 $PackageParameters = Get-PackageParameters
-$PackageParameters | % {Write-Output($_ | Out-String)}
 if (!$PackageParameters['Channel']) { 
   $PackageParameters['Channel'] = 'stable'
 } elseif ($PackageParameters['Channel'] -notin 'stable','alpha','beta','rc') {

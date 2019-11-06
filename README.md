@@ -11,5 +11,5 @@ If you find there is an update available, reinstall using `choco install aapt2 -
 
 ## Package Parameters
 
-`/Channel:['stable'|'alpha'|'beta'|'rc']` - Specify from which channel to download. Default = stable. If nonexistant, null, or whitespace, this will download the latest full release.
+`/Channel:['stable'|'alpha'|'beta'|'rc']` - Specify from which channel to download. Default = stable. Also defaults to stable if nonexistant, null, or whitespace. Channel:stable will download the latest full release.
 Example: `choco install aapt2 --params '/Channel:beta'`
